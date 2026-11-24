@@ -1,0 +1,16 @@
+name: Validate portable design skill
+on:
+  push:
+  pull_request:
+jobs:
+  integrity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/validate_skill.py
+      - run: python scripts/install.py --target all --scope project --project /tmp/skill-validation --dry-run
+      - run: python -m pip install -r requirements-pipeline.txt
+      - run: python -m unittest discover -s tests -v

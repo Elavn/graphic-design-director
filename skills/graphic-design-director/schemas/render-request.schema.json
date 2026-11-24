@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/graphic-design-director/schemas/render-request.schema.json",
+  "title": "Render Request",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "project_id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]{1,62}$"
+    },
+    "state": {
+      "type": "string",
+      "enum": [
+        "NOT_STARTED",
+        "READY",
+        "REQUESTED",
+        "RENDERED"
+      ]
+    },
+    "engine": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "direction_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "expected_artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "format": {
+            "type": "string",
+            "enum": [
+              "PNG",
+              "JPEG",
+              "WEBP",
+              "SVG",
+              "PDF",
+              "OTHER"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "path",
+          "format"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "project_id",
+    "state",
+    "engine",
+    "direction_id",
+    "expected_artifacts",
+    "notes"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/graphic-design-director/schemas/concept-proposals.schema.json",
+  "title": "Concept Proposals",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "project_id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]{1,62}$"
+    },
+    "directions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9-]{1,62}$"
+          },
+          "idea": {
+            "type": "string",
+            "minLength": 1
+          },
+          "visual_mechanism": {
+            "type": "string",
+            "minLength": 1
+          },
+          "brief_alignment": {
+            "type": "string",
+            "minLength": 1
+          },
+          "risks": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "idea",
+          "visual_mechanism",
+          "brief_alignment",
+          "risks"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "selected_direction_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "project_id",
+    "directions",
+    "selected_direction_id"
+  ],
+  "additionalProperties": false
+}

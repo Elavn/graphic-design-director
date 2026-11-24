@@ -1,0 +1,3 @@
+# Agent instructions — Graphic Design Director v0.7.0
+
+This repository is an in-depth Agent Skill, not a service that routes to external models. Read `SKILL.md` first; consult only the relevant references, particularly `references/deep/*`. Respect project isolation, approved asset locks and explicit design format. For concept-led jobs, derive three structurally different ideas; for replication/adaptation, prioritize source fidelity. Never add UI outside its medium, invent performance claims or transform a supplied official mark. Review actual outputs and record specific regressions in `evals/`. Optional local scripts can check contracts and exports; they must not call external AI services.

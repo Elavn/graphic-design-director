@@ -1,0 +1,135 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/graphic-design-director/schemas/project-brief.schema.json",
+  "title": "Project Brief",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "project_id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]{1,62}$"
+    },
+    "mode": {
+      "type": "string",
+      "enum": [
+        "REPLICATE",
+        "ADAPT",
+        "INSPIRE",
+        "CREATE",
+        "HYBRID"
+      ]
+    },
+    "medium": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "brief": {
+      "type": "object",
+      "properties": {
+        "summary": {
+          "type": "string"
+        },
+        "audience": {
+          "type": "string"
+        },
+        "key_message": {
+          "type": "string"
+        },
+        "required_copy": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "summary",
+        "audience",
+        "key_message",
+        "required_copy",
+        "sources"
+      ],
+      "additionalProperties": false
+    },
+    "output": {
+      "type": "object",
+      "properties": {
+        "format": {
+          "type": "string",
+          "enum": [
+            "PNG",
+            "JPEG",
+            "WEBP",
+            "SVG",
+            "PDF",
+            "OTHER"
+          ]
+        },
+        "width_px": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "height_px": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "format",
+        "width_px",
+        "height_px",
+        "notes"
+      ],
+      "additionalProperties": false
+    },
+    "reference_asset_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9-]{1,62}$"
+      },
+      "uniqueItems": true
+    },
+    "creative_scope": {
+      "type": "string",
+      "enum": [
+        "LOCKED",
+        "GUIDED",
+        "OPEN"
+      ]
+    },
+    "project_notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "project_id",
+    "mode",
+    "medium",
+    "brief",
+    "output",
+    "reference_asset_ids",
+    "creative_scope",
+    "project_notes"
+  ],
+  "additionalProperties": false
+}

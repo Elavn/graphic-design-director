@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/graphic-design-director/schemas/asset-manifest.schema.json",
+  "title": "Asset Manifest",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "project_id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]{1,62}$"
+    },
+    "assets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9-]{1,62}$"
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "logo",
+              "reference",
+              "photo",
+              "illustration",
+              "font",
+              "brand-guide",
+              "other"
+            ]
+          },
+          "approved": {
+            "type": "boolean"
+          },
+          "reuse": {
+            "type": "string",
+            "enum": [
+              "exact",
+              "style-only",
+              "editable"
+            ]
+          },
+          "source_name": {
+            "type": "string"
+          },
+          "notes": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "path",
+          "sha256",
+          "kind",
+          "approved",
+          "reuse",
+          "source_name",
+          "notes"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "project_id",
+    "assets"
+  ],
+  "additionalProperties": false
+}

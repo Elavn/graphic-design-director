@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/graphic-design-director/schemas/revision-record.schema.json",
+  "title": "Revision Record",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "project_id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]{1,62}$"
+    },
+    "revisions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "observation": {
+            "type": "string",
+            "minLength": 1
+          },
+          "affected_stage": {
+            "type": "string",
+            "minLength": 1
+          },
+          "before_artifact": {
+            "type": "string"
+          },
+          "after_artifact": {
+            "type": "string"
+          },
+          "change": {
+            "type": "string",
+            "minLength": 1
+          },
+          "regression_test": {
+            "type": "string"
+          },
+          "approval": {
+            "type": "string",
+            "enum": [
+              "PENDING",
+              "REJECTED",
+              "ACCEPTED"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "observation",
+          "affected_stage",
+          "before_artifact",
+          "after_artifact",
+          "change",
+          "regression_test",
+          "approval"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "project_id",
+    "revisions"
+  ],
+  "additionalProperties": false
+}
